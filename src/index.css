@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    --font-display: "Syne", "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* RGB Colorway Engine defaults */
+    --accent-r: 37;
+    --accent-g: 99;
+    --accent-b: 235;
+    --accent-hex: #2563eb;
+    --accent-glow: rgba(37, 99, 235, 0.45);
+    --accent-border: rgba(37, 99, 235, 0.5);
+    --accent-subtle: rgba(37, 99, 235, 0.12);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #070a12;
+    color: #f1f5f9;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html.light body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Dynamic RGB Colorway Classes */
+.accent-bg {
+  background-color: rgb(var(--accent-r), var(--accent-g), var(--accent-b)) !important;
+}
+
+.accent-text {
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b)) !important;
+}
+
+.accent-border {
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.4) !important;
+}
+
+.accent-border-glow:hover {
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.7) !important;
+  box-shadow: 0 10px 30px -5px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.3) !important;
+}
+
+.accent-badge {
+  background-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.12) !important;
+  border-color: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.3) !important;
+  color: rgb(var(--accent-r), var(--accent-g), var(--accent-b)) !important;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glass & Glow utilities */
+.glass-panel {
+  background: rgba(13, 19, 33, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+html.light .glass-panel-hover:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 12px 32px -8px rgba(37, 99, 235, 0.12);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 70%);
+}
+
+html.light .radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.07) 0%, transparent 70%);
+}
+
+/* Light Mode Global Elegance Adaptations */
+html.light .bg-\[\#070a12\],
+html.light .bg-\[\#070a14\],
+html.light .bg-\[\#080c14\] {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-\[\#0b1120\],
+html.light .bg-\[\#0d1424\],
+html.light .bg-\[\#070b14\]\/85,
+html.light .bg-\[\#0a0f1d\] {
+  background-color: #ffffff !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/90,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60 {
+  border-color: rgba(226, 232, 240, 0.85) !important;
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/40 {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-slate-950,
+html.light .bg-slate-950\/80 {
+  background-color: #e2e8f0 !important;
+}
+
+/* Text adaptations in light mode */
+html.light h1.text-white,
+html.light h2.text-white,
+html.light h3.text-white,
+html.light h4.text-white,
+html.light span.text-white:not(.bg-blue-600 *),
+html.light div.text-white:not(.bg-blue-600 *) {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-100 {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Preserve bright text inside primary buttons and highlighted badges */
+html.light .bg-blue-600,
+html.light .bg-blue-600 *,
+html.light .bg-blue-500,
+html.light .bg-blue-500 * {
+  color: #ffffff !important;
+}
+
+html.light .bg-emerald-950\/40,
+html.light .bg-emerald-950\/60 {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+}
+
+html.light .bg-blue-950\/60 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+
+html.light .bg-cyan-950\/60 {
+  background-color: #ecfeff !important;
+  border-color: #a5f3fc !important;
+}
+
+

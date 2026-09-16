@@ -1,0 +1,5 @@
+# robots.txt for Alfi Shahriyar Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://alfi-shahriyar.vercel.app/sitemap.xml
